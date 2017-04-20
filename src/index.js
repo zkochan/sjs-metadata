@@ -4,10 +4,13 @@ import {isObject, isUndefined, isNull, isPropertyKey} from './lang';
 let metadata = new WeakMap();
 
 export default class {
-    static find(target, key, property) {
+    static find(target, key, property=null) {
         let metadataMap = getMetadataMap(target, key);
         if(isUndefined(metadataMap)){
             return undefined;
+        }
+        if(isNull(property)){
+            return metadataMap;
         }
         return metadataMap.get(property);
     }

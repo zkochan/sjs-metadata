@@ -34,6 +34,15 @@ QUnit.test('Metadata.get(...) -> undefined', assert => {
     assert.equal(Metadata.get(target, 'key', 'property'), undefined, 'Metadata.get(target, "key", "property")');
 });
 
+QUnit.test('Metadata.find(...)', assert => {
+    let target = () => {};
+    assert.equal(Metadata.find(target, 'key'), undefined);
+    assert.equal(Metadata.find(target, 'key', 'property'), undefined);
+    Metadata.set(target, 'key', 'property', 1);
+    assert.equal(Metadata.find(target, 'key').get('property'), 1);
+    assert.equal(Metadata.find(target, 'key', 'property'), 1);
+});
+
 QUnit.test('Metadata.get(...)', assert => {
     let target = () => {};
     Metadata.set(target, 'key', 'property', 1);
