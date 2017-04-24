@@ -8,6 +8,13 @@ module.exports = function(config) {
 
     frameworks: ['qunit'],
 
+    plugins: [
+      require('karma-rollup-plugin'),
+      require('karma-qunit'),
+      require('karma-chrome-launcher'),
+      require('karma-firefox-launcher'),
+    ],
+
     files: [
       { pattern: 'src/**/*.js', included: false },
        "test/index.js"
